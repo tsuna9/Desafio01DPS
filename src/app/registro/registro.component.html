@@ -1,0 +1,40 @@
+<div class="header">
+    <h1>Datos de los clientes</h1>
+    <p>Ingrese los datos solicitados</p>
+</div>
+<label>Nombre:</label>
+<input type="text"[(ngModel)]="nombre">
+<label>Dui:</label>
+<input type="text"[(ngModel)]="Dui">
+<label>Producto:</label>
+<select [(ngModel)]="opcionSeleccionado" (change)="capturar()">
+    <option value="Selecciona">Selecciona</option>
+    <option *ngFor="let producto of CodigoP" value="{{producto}}">
+        {{producto}}
+    </option>
+</select>
+<button class="button" (click)="ingresar()">Ingresar</button>
+<br/><br/>
+
+<!--Tabla con los datos-->
+
+<table [hidden]="visitas==0">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dui</th>
+            <th>Producto</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tcliente of registro">
+            <td>{{tcliente.nombre}}</td>
+            <td>{{tcliente.Dui}}</td>
+            <td>{{tcliente.nombreP}}</td>
+            <td>{{tcliente.DescripcionP}}</td>
+            <td>{{tcliente.precioT}}</td>
+        </tr>
+    </tbody>
+</table>
